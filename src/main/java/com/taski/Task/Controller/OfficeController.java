@@ -2,9 +2,7 @@ package com.taski.Task.Controller;
 
 import com.taski.Task.Model.Office;
 import com.taski.Task.Service.OfficeService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,7 +16,17 @@ public class OfficeController {
     }
 
     @GetMapping
-    public List<Office> getAllOffices(){
+    public List<Office> getAllOffices() {
         return officeService.getAllOffices();
+    }
+
+    @PostMapping
+    public Office createOffice(@RequestBody Office office) {
+        return officeService.createOffice(office);
+    }
+
+    @GetMapping("/{id}")
+    public Office getOfficeById(@PathVariable Long id){
+        return officeService.getOfficeById(id);
     }
 }

@@ -14,7 +14,17 @@ public class OfficeService {
         this.officeRepository = officeRepository;
     }
 
-    public List<Office> getAllOffices(){
+    public List<Office> getAllOffices() {
         return officeRepository.findAll();
+    }
+
+    public Office createOffice(Office office) {
+        return officeRepository.save(office);
+    }
+
+    public Office getOfficeById(Long id) {
+        return officeRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Office Not Found"));
+
     }
 }
