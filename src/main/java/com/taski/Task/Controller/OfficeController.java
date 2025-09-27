@@ -29,4 +29,14 @@ public class OfficeController {
     public Office getOfficeById(@PathVariable Long id){
         return officeService.getOfficeById(id);
     }
+
+    @PutMapping("/{id}")
+    public Office updateOffice(@PathVariable Long id,@RequestBody Office office){
+        return officeService.updateOffice(id,office);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteOffice(@PathVariable Long id){
+        officeService.deleteOffice(id);
+    }
 }

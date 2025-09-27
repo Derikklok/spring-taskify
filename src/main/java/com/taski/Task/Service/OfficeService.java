@@ -27,4 +27,15 @@ public class OfficeService {
                 .orElseThrow(() -> new RuntimeException("Office Not Found"));
 
     }
+
+    public Office updateOffice(Long id, Office updateOffice) {
+        Office office = getOfficeById(id);
+        office.setOfficeName(updateOffice.getOfficeName());
+        office.setAddress(updateOffice.getAddress());
+        return officeRepository.save(office);
+    }
+
+    public void deleteOffice(Long id){
+        officeRepository.deleteById(id);
+    }
 }
